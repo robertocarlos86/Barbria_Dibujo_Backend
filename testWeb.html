@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<h2>The name Attribute</h2>
+
+<form action="http://127.0.0.1:3000/add_user" method="post" id="myForm" name="myForm">
+  <label for="nombre">nombre:</label><br>
+  <input type="text" name="nombre" value="Carlos"><br>  
+  <label for="apellidos">apellidos:</label><br>
+  <input type="text" name="apellidos" value="Gonzalez"><br>
+  <label for="fechaNaci">fechaNaci:</label><br>
+  <input type="text" name="fechaNaci" value="1639711698"><br>
+  <label for="email">email:</label><br>
+  <input type="text" name="email" value="cgonzalez.dev@gmail.com"><br>
+  <label for="passwd">passwd:</label><br>
+  <input type="text" name="passwd" value="1234"><br>
+  <label for="telefono">telefono:</label><br>
+  <input type="text" name="telefono" value="3002707873"><br>
+  <input type="text" name="rolID" value="1"><br>  
+  <input type="submit" value="Submit" onclick="submitform(event);">
+</form> 
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/action_page.php".</p>
+
+<p>Notice that the value of the "First name" field will not be submitted, because the input element does not have a name attribute.</p>
+
+<script type="text/javascript">
+    function submitform(e){
+		e.preventDefault();
+		let myForm = document.getElementById('myForm');
+		const data = new FormData(myForm);
+		const formJSON = Object.fromEntries(data.entries());
+		let formData = JSON.stringify(formJSON, null, 2);
+		console.log(formData);
+		return false;
+    }
+</script>
+
+</body>
+</html>
